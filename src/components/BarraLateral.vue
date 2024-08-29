@@ -1,7 +1,11 @@
 <template>
   <header>
     <h1>
-      <img alt="Gerenciador de Produtos" src="../assets/product-manager.png" width="100rem">
+      <img
+        alt="Gerenciador de Produtos"
+        src="../assets/product-manager.png"
+        width="100rem"
+      />
     </h1>
     <nav class="panel mt-5">
       <ul>

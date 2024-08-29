@@ -1,28 +1,48 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
+import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import Home from "@/views/Home.vue";
-import Produtos from "@/views/Produtos.vue";
-import Categoria from "@/views/Categorias.vue";
+import FormCadProduto from "@/views/Produto/FormCadProduto.vue";
+import TableProdutos from "@/views/Produto/TableProdutos.vue";
+import TableCategoria from "@/views/Categoria/TableCategoria.vue";
+import FormCadCategoria from "@/views/Categoria/FormCadCategoria.vue";
 
 const rotas: RouteRecordRaw[] = [
-  {
-    path: "/",
-    name: "HomePage",
-    component: Home,
-  },
+  { path: "/", component: Home },
   {
     path: "/produtos",
-    name: "ProdutoPage",
-    component: Produtos
+    component: () => import("../views/Produto/Produtos.vue"),
+    children: [
+      {
+        path: "",
+        name: "Lista de Produtos",
+        component:  TableProdutos,
+      },
+      {
+        path: "novo",
+        name: "Novo Produto",
+        component: FormCadProduto,
+      },
+    ],
   },
   {
     path: "/categorias",
-    name: "CategoriaPage",
-    component: Categoria
-  }
+    component: () => import("../views/Categoria/Categorias.vue"),
+    children: [
+      {
+        path: "",
+        name: "Lista de Categorias",
+        component: TableCategoria,
+      },
+      {
+        path: "novo",
+        name: "Nova Categoria",
+        component: FormCadCategoria,
+      },
+    ],
+  },
 ];
 
 const roteador = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes: rotas,
 });
 

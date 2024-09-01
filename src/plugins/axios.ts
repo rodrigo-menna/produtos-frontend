@@ -1,15 +1,6 @@
-import axios from "axios";
-import type { App } from "vue";
+import axios, { AxiosInstance } from 'axios';
 
-interface AxiosOptions {
-  baseUrl?: string;
-  token?: string;
-}
-
-export default {
-  install: (app: App, options: AxiosOptions) => {
-    app.config.globalProperties.$axios = axios.create({
-      baseURL: options.baseUrl,
-    });
-  },
-};
+const http : AxiosInstance = axios.create({
+  baseURL: "http://localhost:8080/",
+});
+export default http;

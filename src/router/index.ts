@@ -2,8 +2,8 @@ import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import Home from "@/views/Home.vue";
 import FormCadProduto from "@/views/Produto/FormCadProduto.vue";
 import TableProdutos from "@/views/Produto/TableProdutos.vue";
-import TableCategoria from "@/views/Categoria/TableCategoria.vue";
-import FormCadCategoria from "@/views/Categoria/FormCadCategoria.vue";
+import TableCategoria from "@/components/TableCategoria.vue";
+import FormCadCategoria from "@/components/FormCadCategoria.vue";
 
 const rotas: RouteRecordRaw[] = [
   { path: "/", component: Home },

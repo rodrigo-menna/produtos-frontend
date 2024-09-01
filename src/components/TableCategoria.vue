@@ -15,8 +15,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Pereciveis</td>
+        <tr v-for="categoria in categorias" :key="categoria.id">
+          <td>{{ categoria.nome }}</td>
           <td>
             <button class="button ml-2 is-link">
               <span class="icon is-small">
@@ -35,9 +35,24 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, PropType } from "vue";
+import http from "@/plugins/axios";
+import ICategoria from "@/Interfaces/ICategoria";
 
 export default defineComponent({
   name: "lista-de-categorias",
+  data() {
+    return {
+      categorias: [] as Array<ICategoria>,
+    };
+  },
+  mounted() {
+    this.loadCategorias();
+  },
+  methods: {
+    async loadCategorias() {
+      this.categorias = (await http.get("/categoria/find")).data;
+    },
+  },
 });
 </script>
